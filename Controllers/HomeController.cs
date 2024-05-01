@@ -58,6 +58,7 @@ namespace pdf.Controllers
             _baseContext = baseContext;
             _mapper = mapper;
         }
+        #region form
         public IActionResult Index()
         {
 
@@ -165,23 +166,52 @@ namespace pdf.Controllers
             }
         }
 
-
-
-
+        #endregion
+        #region pdf
         [AllowAnonymous]
-        public async Task<IActionResult> HeaderPdf()
+        public async Task<IActionResult> PdfFilter(DataTypeViewModelPdf model, CancellationToken cancellationToken)
         {
-            //var obj = await _httpService.Get<UserViewModelPdf>(_urlHelper.UrlBase + "User/" + guid);
-            return View("_Headpdf");
+
+            var list = new List<object>();
+
+            var obj = _baseContext.DataType.AsNoTracking();
+            if (!string.IsNullOrEmpty(model.FAName))
+            {
+                obj = obj.Where(z => z.FAName == model.FAName);
+            }
+            if (!string.IsNullOrEmpty(model.Name))
+            {
+                obj = obj.Where(z => z.FAName == model.Name);
+            }
+
+
+            var result = await obj.ProjectTo<DataTypeViewModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+            foreach (var item in result)
+            {
+                list.Add(item);
+
+            }
+            var headerHtml = "https://localhost:7288" + Url.Action("HeaderPdf", "home");
+            var footerHtml = "https://localhost:7288" + Url.Action("FooterPdf", "home");
+
+
+            return new ViewAsPdf("_PdfListView", list)
+            {
+                FileName = "file.pdf",
+                CustomSwitches = $"--header-html \"{headerHtml}\" --footer-html \"{footerHtml}\" --header-spacing 5 --footer-spacing 5",
+                PageSize = model.Size,
+                PageMargins = new Rotativa.AspNetCore.Options.Margins { Left = 5, Right = 5, Top = 20, Bottom = 20 },
+                PageOrientation = model.Orientation,
+            };
+
+
+
 
         }
-        [AllowAnonymous]
-        public async Task<IActionResult> FooterPdf()
-        {
-            //var obj = await _httpService.Get<UserViewModelPdf>(_urlHelper.UrlBase + "User/" + guid);
-            return View("_FooterPdf");
 
-        }
+
+
+
         [AllowAnonymous]
         public async Task<IActionResult> Pdf(CancellationToken cancellationToken)
         {
@@ -222,56 +252,20 @@ namespace pdf.Controllers
 
 
 
+       [AllowAnonymous]
+        public async Task<IActionResult> HeaderPdf()
+        {
+            //var obj = await _httpService.Get<UserViewModelPdf>(_urlHelper.UrlBase + "User/" + guid);
+            return View("_Headpdf");
+
+        }
         [AllowAnonymous]
-        public async Task<IActionResult> PdfFilter(DataTypeViewModelPdf model,CancellationToken cancellationToken)
+        public async Task<IActionResult> FooterPdf()
         {
-
-            var list = new List<object>();
-
-            var obj =  _baseContext.DataType.AsNoTracking();
-            if (!string.IsNullOrEmpty(model.FAName))
-            {
-                obj = obj.Where(z => z.FAName == model.FAName);
-            }
-            if (!string.IsNullOrEmpty(model.Name))
-            {
-                obj = obj.Where(z => z.FAName == model.Name);
-            }
-
-
-            var result = await obj.ProjectTo<DataTypeViewModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
-            foreach (var item in result)
-            {
-                list.Add(item);
-
-            }
-            var headerHtml = "https://localhost:7288" + Url.Action("HeaderPdf", "home");
-            var footerHtml = "https://localhost:7288" + Url.Action("FooterPdf", "home");
-
-
-            return new ViewAsPdf("_PdfListView", list)
-            {
-                FileName = "file.pdf",
-                CustomSwitches = $"--header-html \"{headerHtml}\" --footer-html \"{footerHtml}\" --header-spacing 5 --footer-spacing 5",
-                PageSize = model.Size,
-                PageMargins = new Rotativa.AspNetCore.Options.Margins { Left = 5, Right = 5, Top = 20, Bottom = 20 },
-                PageOrientation = model.Orientation,
-            };
-
-
-
+            //var obj = await _httpService.Get<UserViewModelPdf>(_urlHelper.UrlBase + "User/" + guid);
+            return View("_FooterPdf");
 
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        #endregion
     }
 }
