@@ -1,0 +1,1297 @@
+{
+  "ReportVersion": "2017.2.3.0",
+  "ReportGuid": "28b3ce7251434c1a97960b536bc6eb15",
+  "ReportName": "Report",
+  "ReportAlias": "Report",
+  "ReportCreated": "/Date(1514117793000+0330)/",
+  "ReportChanged": "/Date(1514989557544+0330)/",
+  "EngineVersion": "EngineV1",
+  "Script": "using System;\r\nusing System.Drawing;\r\nusing System.Windows.Forms;\r\nusing System.Data;\r\nusing Stimulsoft.Controls;\r\nusing Stimulsoft.Base.Drawing;\r\nusing Stimulsoft.Report;\r\nusing Stimulsoft.Report.Dialogs;\r\nusing Stimulsoft.Report.Components;\r\n\r\nnamespace Reports\r\n{\r\n    public class Report : Stimulsoft.Report.StiReport\r\n    {\r\n        public Report()        {\r\n            this.InitializeComponent();\r\n        }\r\n\r\n        #region StiReport Designer generated code - do not modify\r\n\t\t#endregion StiReport Designer generated code - do not modify\r\n    }\r\n}\r\n",
+  "ReferencedAssemblies": {
+    "0": "System.Dll",
+    "1": "System.Drawing.Dll",
+    "2": "System.Windows.Forms.Dll",
+    "3": "System.Data.Dll",
+    "4": "System.Xml.Dll",
+    "5": "Stimulsoft.Controls.Dll",
+    "6": "Stimulsoft.Base.Dll",
+    "7": "Stimulsoft.Report.Dll"
+  },
+  "Dictionary": {
+    "BusinessObjects": {
+      "0": {
+        "Columns": {
+          "0": {
+            "Name": "AfterPlan",
+            "Index": -1,
+            "NameInSource": "AfterPlan",
+            "Alias": "AfterPlan",
+            "Type": "System.Double"
+          },
+          "1": {
+            "Name": "BeforPlan",
+            "Index": -1,
+            "NameInSource": "BeforPlan",
+            "Alias": "BeforPlan",
+            "Type": "System.Double"
+          },
+          "2": {
+            "Name": "Section",
+            "Index": -1,
+            "NameInSource": "Section",
+            "Alias": "Section",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "SectionType",
+            "Index": -1,
+            "NameInSource": "SectionType",
+            "Alias": "SectionType",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "Sum",
+            "Index": -1,
+            "NameInSource": "Sum",
+            "Alias": "Sum",
+            "Type": "System.Double"
+          },
+          "5": {
+            "Name": "Title",
+            "Index": -1,
+            "NameInSource": "Title",
+            "Alias": "Title",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "TotalSum",
+            "Index": -1,
+            "NameInSource": "TotalSum",
+            "Alias": "TotalSum",
+            "Type": "System.Double"
+          },
+          "7": {
+            "Name": "Year1",
+            "Index": -1,
+            "NameInSource": "Year1",
+            "Alias": "Year1",
+            "Type": "System.Double"
+          },
+          "8": {
+            "Name": "Year2",
+            "Index": -1,
+            "NameInSource": "Year2",
+            "Alias": "Year2",
+            "Type": "System.Double"
+          },
+          "9": {
+            "Name": "Year3",
+            "Index": -1,
+            "NameInSource": "Year3",
+            "Alias": "Year3",
+            "Type": "System.Double"
+          },
+          "10": {
+            "Name": "Year4",
+            "Index": -1,
+            "NameInSource": "Year4",
+            "Alias": "Year4",
+            "Type": "System.Double"
+          },
+          "11": {
+            "Name": "Year5",
+            "Index": -1,
+            "NameInSource": "Year5",
+            "Alias": "Year5",
+            "Type": "System.Double"
+          },
+          "12": {
+            "Name": "Year6",
+            "Index": -1,
+            "NameInSource": "Year6",
+            "Alias": "Year6",
+            "Type": "System.Double"
+          }
+        },
+        "Guid": "c7f2c253cc07402786005048baa0196d",
+        "Category": "Form4",
+        "Name": "CreditSection",
+        "Alias": "CreditSection"
+      },
+      "1": {
+        "Columns": {
+          "0": {
+            "Name": "Year1",
+            "Index": -1,
+            "NameInSource": "Year1",
+            "Alias": "Year1",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "Year1Type",
+            "Index": -1,
+            "NameInSource": "Year1Type",
+            "Alias": "Year1Type",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "Year2",
+            "Index": -1,
+            "NameInSource": "Year2",
+            "Alias": "Year2",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "Year2Type",
+            "Index": -1,
+            "NameInSource": "Year2Type",
+            "Alias": "Year2Type",
+            "Type": "System.String"
+          },
+          "4": {
+            "Name": "Year3",
+            "Index": -1,
+            "NameInSource": "Year3",
+            "Alias": "Year3",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "Year3Type",
+            "Index": -1,
+            "NameInSource": "Year3Type",
+            "Alias": "Year3Type",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "Year4",
+            "Index": -1,
+            "NameInSource": "Year4",
+            "Alias": "Year4",
+            "Type": "System.String"
+          },
+          "7": {
+            "Name": "Year4Type",
+            "Index": -1,
+            "NameInSource": "Year4Type",
+            "Alias": "Year4Type",
+            "Type": "System.String"
+          },
+          "8": {
+            "Name": "Year5",
+            "Index": -1,
+            "NameInSource": "Year5",
+            "Alias": "Year5",
+            "Type": "System.String"
+          },
+          "9": {
+            "Name": "Year5Type",
+            "Index": -1,
+            "NameInSource": "Year5Type",
+            "Alias": "Year5Type",
+            "Type": "System.String"
+          },
+          "10": {
+            "Name": "Year6",
+            "Index": -1,
+            "NameInSource": "Year6",
+            "Alias": "Year6",
+            "Type": "System.String"
+          },
+          "11": {
+            "Name": "Year6Type",
+            "Index": -1,
+            "NameInSource": "Year6Type",
+            "Alias": "Year6Type",
+            "Type": "System.String"
+          }
+        },
+        "Guid": "7658caa2d4a74e58a3e21dad1b8ab6d1",
+        "Category": "Form4",
+        "Name": "HeaderTable",
+        "Alias": "HeaderTable"
+      },
+      "2": {
+        "Columns": {
+          "0": {
+            "Name": "Code",
+            "Index": -1,
+            "NameInSource": "Code",
+            "Alias": "Code",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "OrganizationCode",
+            "Index": -1,
+            "NameInSource": "OrganizationCode",
+            "Alias": "OrganizationCode",
+            "Type": "System.String"
+          },
+          "2": {
+            "Name": "OrganizationTitle",
+            "Index": -1,
+            "NameInSource": "OrganizationTitle",
+            "Alias": "OrganizationTitle",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "Title",
+            "Index": -1,
+            "NameInSource": "Title",
+            "Alias": "Title",
+            "Type": "System.String"
+          }
+        },
+        "Guid": "a8c4cca10bfc42de9e77748739da48e4",
+        "Category": "Form4",
+        "Name": "Plan",
+        "Alias": "Plan"
+      }
+    }
+  },
+  "Pages": {
+    "0": {
+      "Ident": "StiPage",
+      "Name": "Page1",
+      "Guid": "53eb19afd9384330a55a469526c51139",
+      "Interaction": {
+        "Ident": "StiInteraction"
+      },
+      "Border": ";;2;;;;;solid:Black",
+      "Brush": "solid:",
+      "Components": {
+        "0": {
+          "Ident": "StiPageHeaderBand",
+          "Name": "PageHeaderBand1",
+          "Guid": "471a0259e5db419d9f38dca873706783",
+          "ClientRectangle": "0,0.4,27.7,2",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text1",
+              "Guid": "7cc18e2e22674f7ab6060285524bded6",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "23.8,0,3.8,1.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "\r\nموافقنامه شرح عملیات طرح\r\nفرم 4 - فصول سرمایه گذاری\r\n"
+              },
+              "HorAlignment": "Center",
+              "Font": "B Nazanin;9;;",
+              "Border": "All;;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text2",
+              "Guid": "b6a0551c7cca4988b42e5c35dcf8259b",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "21.2,0.2,2.4,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":عنوان طرح\r\n"
+              },
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Text3",
+              "Guid": "bac0e45a88154c43a5da3e3b688e524b",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "9,0.2,12,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{Plan.Title}"
+              },
+              "HorAlignment": "Right",
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Text4",
+              "Guid": "0a56b03292be4d2ebd4b13f5688a68e8",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "9.2,1,11.8,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{Plan.OrganizationTitle}"
+              },
+              "HorAlignment": "Right",
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Text5",
+              "Guid": "75c7cdf14ad2484096588e617e6aaf36",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "21.2,1,2.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":عنوان دستگاه اجرایی"
+              },
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Text6",
+              "Guid": "c980571c26694fa18513f463d6fdab01",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,0.2,4.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{Plan.Code}"
+              },
+              "HorAlignment": "Right",
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Text7",
+              "Guid": "9e7c47f488f64c76a801758cef92f1c4",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "5,0.2,1.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":کد طرح"
+              },
+              "HorAlignment": "Right",
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "7": {
+              "Ident": "StiText",
+              "Name": "Text8",
+              "Guid": "ddb0078378314395b500fbcb4efb0043",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0.2,1,4.6,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{Plan.OrganizationCode}"
+              },
+              "HorAlignment": "Right",
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "8": {
+              "Ident": "StiText",
+              "Name": "Text9",
+              "Guid": "d0187f0af1e446188daf5a42b435e7d5",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "4.8,1,2.2,0.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": ":کد دستگاه اجرایی"
+              },
+              "HorAlignment": "Right",
+              "Font": "B Nazanin;9;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            },
+            "9": {
+              "Ident": "StiPanel",
+              "Name": "Panel1",
+              "CanGrow": true,
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0,2,27.6,16.2",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:0,0,0,0",
+              "Brush": "solid:",
+              "Components": {
+                "0": {
+                  "Ident": "StiCrossTab",
+                  "Name": "CrossTab1",
+                  "CanShrink": true,
+                  "MinSize": "0,0",
+                  "MaxSize": "0,0",
+                  "ClientRectangle": "0.2,0.6,33,15.8",
+                  "Interaction": {
+                    "Ident": "StiInteraction"
+                  },
+                  "Border": "All;;;;;;;solid:0,0,0,0",
+                  "Brush": "solid:",
+                  "Components": {
+                    "0": {
+                      "Ident": "StiCrossTitle",
+                      "Name": "CrossTab1_Row1_Title",
+                      "Guid": "e08e93660a764d208f275f3f53f20142",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "0,0.05,0.6,1.6",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Border": "Top, Right, Bottom;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression",
+                      "TypeOfComponent": "Row:CrossTab1_Row1"
+                    },
+                    "1": {
+                      "Ident": "StiCrossTitle",
+                      "Name": "CrossTab1_Row2_Title",
+                      "Guid": "ec46c8ac02ed483da2a2af8e92ef0c3b",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "0.6,0.05,1.4,1.6",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "عنوان"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "Top, Bottom;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression",
+                      "TypeOfComponent": "Row:CrossTab1_Row2"
+                    },
+                    "2": {
+                      "Ident": "StiCrossRowTotal",
+                      "Name": "CrossTab1_RowTotal1",
+                      "Guid": "e5b112ed57574c388b72b85060491e8c",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "0,4.1,2.8,1.2",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "جمع کل"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:255,255,255",
+                      "TextBrush": "solid:Black",
+                      "Type": "Expression"
+                    },
+                    "3": {
+                      "Ident": "StiCrossRowTotal",
+                      "Name": "CrossTab1_RowTotal3",
+                      "Guid": "633b883a0ea84bc4baa0aadc508cf5eb",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "2,2.9,0,0",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "Total"
+                      },
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:255,255,255",
+                      "TextBrush": "solid:Black"
+                    },
+                    "4": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader1",
+                      "Guid": "3574c24a232e4da5af805b4f009795c8",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "2.85,0.65,1.4,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "عملکرد قبل \r\nاز برنامه"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "Left, Right, Bottom;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "5": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader2",
+                      "Guid": "341da8693d7848f9ad09ae6c49a9a88c",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "4.25,0.65,4.2,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "{HeaderTable.Year1Type}\r\n{HeaderTable.Year1}"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "6": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader3",
+                      "Guid": "556caf8994dd4c4f90dd46c44800826b",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "8.45,0.65,4.2,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "{HeaderTable.Year2Type}\r\n{HeaderTable.Year2}"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "7": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader4",
+                      "Guid": "c18a3bcc2d574b96b2c5b51aeafce4b1",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "12.65,0.65,4.2,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "{HeaderTable.Year3Type}\r\n{HeaderTable.Year3}"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "8": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader5",
+                      "Guid": "20f387474f5540519a338570981f7b39",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "16.85,0.65,4.2,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "{HeaderTable.Year4Type}\r\n{HeaderTable.Year4}"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "9": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader6",
+                      "Guid": "78c38f5799644898a619886dd91555e8",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "21.05,0.65,4.2,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "{HeaderTable.Year5Type}\r\n{HeaderTable.Year5}"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "10": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader7",
+                      "Guid": "811006d883014b1f91733bbadfad88b3",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "25.25,0.65,4.2,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "{HeaderTable.Year6Type}\r\n{HeaderTable.Year6}"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "11": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader8",
+                      "Guid": "7e6715a8fcc6442b85b97976780fed5f",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "29.45,0.65,0.6,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "جمع"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "12": {
+                      "Ident": "StiCrossTitle",
+                      "Name": "CrossTab1_SummaryTitle",
+                      "Guid": "9d57c1794c2b4bec841f3914064300a2",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "2.85,0.05,29.4,0.6",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "اعتبارات سالهای برنامه"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression",
+                      "TypeOfComponent": "SummaryTitle"
+                    },
+                    "13": {
+                      "Ident": "StiCrossRowTotal",
+                      "Name": "CrossTab1_RowTotal2",
+                      "Guid": "c0fcf34de8574474ab10476af7254b1e",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "0.6,2.9,2.2,1.2",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "جمع"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:255,255,255",
+                      "TextBrush": "solid:Black",
+                      "Type": "Expression"
+                    },
+                    "14": {
+                      "Ident": "StiCrossTitle",
+                      "Name": "CrossTab1_Row3_Title",
+                      "Guid": "51c5aec37d7d4b1cb7bb283d6dbe625b",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "2,0.05,0.8,1.6",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Border": "Top, Left, Bottom;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression",
+                      "TypeOfComponent": "Row:CrossTab1_Row3"
+                    },
+                    "15": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader9",
+                      "Guid": "dae11ad67e194e1cb869b9ffccf2058a",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "30.05,0.65,1.2,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "پیش بینی\r\nسالهای بعد"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:Black",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "16": {
+                      "Ident": "StiCrossSummaryHeader",
+                      "Name": "CrossTab1_SumHeader10",
+                      "Guid": "fb805054f4a4434fb24a94ce99b496b3",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "31.25,0.65,1,1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "جمع کل"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:Black",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Type": "Expression"
+                    },
+                    "17": {
+                      "Ident": "StiCrossRow",
+                      "Name": "CrossTab1_Row1",
+                      "Guid": "239f9a39e0fd476ea3f2ac815cf954dd",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "0,1.7,0.6,2.4",
+                      "Alias": "SectionType",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiCrossHeaderInteraction"
+                      },
+                      "Text": {
+                        "Value": "SectionType"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextOptions": {
+                        "Angle": 90.0
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.SectionType}"
+                      },
+                      "DisplayValue": {
+                        "Value": "{CreditSection.SectionType}"
+                      },
+                      "TotalGuid": "e5b112ed57574c388b72b85060491e8c"
+                    },
+                    "18": {
+                      "Ident": "StiCrossRow",
+                      "Name": "CrossTab1_Row2",
+                      "Guid": "18fb33a9e6ca4f219a0fdd4667de1671",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "0.6,1.7,1.4,1.2",
+                      "Alias": "Section",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiCrossHeaderInteraction"
+                      },
+                      "Text": {
+                        "Value": "Section"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Value": {
+                        "Value": "{CreditSection.Section}"
+                      },
+                      "DisplayValue": {
+                        "Value": "{CreditSection.Section}"
+                      },
+                      "TotalGuid": "c0fcf34de8574474ab10476af7254b1e"
+                    },
+                    "19": {
+                      "Ident": "StiCrossRow",
+                      "Name": "CrossTab1_Row3",
+                      "Guid": "c9a558cc462844c285a47baa1b962792",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "2,1.7,0.8,1.2",
+                      "Alias": "Title",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiCrossHeaderInteraction"
+                      },
+                      "Text": {
+                        "Value": "Title"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "Value": {
+                        "Value": "{CreditSection.Title}"
+                      },
+                      "DisplayValue": {
+                        "Value": "{CreditSection.Title}"
+                      },
+                      "TotalGuid": "633b883a0ea84bc4baa0aadc508cf5eb",
+                      "ShowTotal": false
+                    },
+                    "20": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum1",
+                      "Guid": "3c3685c8f5314a4b80a021ab4a1b9e00",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "2.85,1.7,1.4,1.2",
+                      "Alias": "BeforPlan",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.BeforPlan}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "21": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum2",
+                      "Guid": "02c655ac54664eb8aa6c874bfbf86119",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "4.25,1.7,4.2,1.2",
+                      "Alias": "Year1",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.Year1}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "22": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum3",
+                      "Guid": "8d0892efc2ce42eb8079ed6ab7d73c73",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "8.45,1.7,4.2,1.2",
+                      "Alias": "Year2",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.Year2}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "23": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum4",
+                      "Guid": "dbb8898b686b49dfabd0cb1c9d2eaccb",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "12.65,1.7,4.2,1.2",
+                      "Alias": "Year3",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.Year3}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "24": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum5",
+                      "Guid": "ed05cb5e2bd04593bc740340ebc0190c",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "16.85,1.7,4.2,1.2",
+                      "Alias": "Year4",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.Year4}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "25": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum6",
+                      "Guid": "f593e87c9f574d1ebf4e615b9fa466ac",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "21.05,1.7,4.2,1.2",
+                      "Alias": "Year5",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.Year5}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "26": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum7",
+                      "Guid": "f1a6b9348675436fbe04706c3ba5e1e0",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "25.25,1.7,4.2,1.2",
+                      "Alias": "Year6",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:0,0,0,0",
+                      "Brush": "solid:White",
+                      "TextBrush": "solid:105,105,105",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.Year6}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "27": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum8",
+                      "Guid": "164deaee31b641dfb4ebccd825fb3a7f",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "29.45,1.7,0.6,1.2",
+                      "Alias": "Sum",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:Black",
+                      "Brush": "solid:255,255,255",
+                      "TextBrush": "solid:Black",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.Sum}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "28": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum9",
+                      "Guid": "9a1917098ed948009269690fba05eb0a",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "30.05,1.7,1.2,1.2",
+                      "Alias": "AfterPlan",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:Black",
+                      "Brush": "solid:255,255,255",
+                      "TextBrush": "solid:Black",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.AfterPlan}"
+                      },
+                      "HorAlignment": "Center"
+                    },
+                    "29": {
+                      "Ident": "StiCrossSummary",
+                      "Name": "CrossTab1_Sum10",
+                      "Guid": "2825f0ee169940048a686adff3f71dac",
+                      "MinSize": "0,0",
+                      "MaxSize": "0,0",
+                      "ClientRectangle": "31.25,1.7,1,1.2",
+                      "Alias": "TotalSum",
+                      "Restrictions": "AllowMove, AllowResize, AllowSelect, AllowChange",
+                      "Interaction": {
+                        "Ident": "StiInteraction"
+                      },
+                      "Text": {
+                        "Value": "0"
+                      },
+                      "Font": "B Nazanin;9;;",
+                      "Border": "All;;;;;;;solid:Black",
+                      "Brush": "solid:255,255,255",
+                      "TextBrush": "solid:Black",
+                      "TextFormat": {
+                        "Ident": "StiNumberFormatService",
+                        "NegativePattern": 1,
+                        "DecimalSeparator": "/",
+                        "DecimalDigits": 3,
+                        "GroupSeparator": ",",
+                        "State": "DecimalDigits, DecimalSeparator"
+                      },
+                      "Value": {
+                        "Value": "{CreditSection.TotalSum}"
+                      },
+                      "HorAlignment": "Center"
+                    }
+                  },
+                  "BusinessObjectGuid": "c7f2c253cc07402786005048baa0196d",
+                  "HorAlignment": "Width",
+                  "SummaryDirection": "LeftToRight",
+                  "RightToLeft": true
+                }
+              }
+            },
+            "10": {
+              "Ident": "StiStartPointPrimitive",
+              "Name": "StartPointPrimitive1",
+              "Guid": "d138eb2dc8bd40efbe6060f9d8b70748",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "0,0,0,0",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "ReferenceToGuid": "716d58c5412540089d917425bdcd7431"
+            },
+            "11": {
+              "Ident": "StiEndPointPrimitive",
+              "Name": "EndPointPrimitive1",
+              "Guid": "487f1f6ccb4b42a5856c94a098503404",
+              "MinSize": "0,0",
+              "MaxSize": "0,0",
+              "ClientRectangle": "23.6,1.8,0,0",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "ReferenceToGuid": "716d58c5412540089d917425bdcd7431"
+            }
+          }
+        },
+        "1": {
+          "Ident": "StiText",
+          "Name": "Text11",
+          "Guid": "614ef5f0bbac4f1f870b116e44eae357",
+          "MinSize": "0,0",
+          "MaxSize": "0,0",
+          "ClientRectangle": "-0.6,2,3,0.6",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Text": {
+            "Value": "(مبالغ به میلیون ریال)"
+          },
+          "HorAlignment": "Right",
+          "Font": "B Nazanin;9;;",
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:",
+          "TextBrush": "solid:Black",
+          "Type": "Expression"
+        },
+        "2": {
+          "Ident": "StiRectanglePrimitive",
+          "Name": "RectanglePrimitive1",
+          "Guid": "716d58c5412540089d917425bdcd7431",
+          "MinSize": "0,0",
+          "MaxSize": "0,0",
+          "ClientRectangle": "0,0.4,23.6,1.8",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          }
+        }
+      },
+      "PaperSize": "A4",
+      "Orientation": "Landscape",
+      "PageWidth": 29.7,
+      "PageHeight": 21.0,
+      "Watermark": {
+        "TextBrush": "solid:50,0,0,0"
+      },
+      "Margins": {
+        "Left": 1.0,
+        "Right": 1.0,
+        "Top": 1.0,
+        "Bottom": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+﻿@using pdf.Controllers
+@model DataTypeViewModel
+@{
+    Layout = null;
+    string callback = ViewBag.CallBackAddBrand;
+    var iscallback = !string.IsNullOrEmpty(callback);
+}
+<div class="container frm k-rtl">
+    @using (Html.BeginForm())
+    {
+        @(await Component.InvokeAsync("CustomeForm", Model))
+
+        @Html.Mvc().FormButtons()
+
+    }
+</div>

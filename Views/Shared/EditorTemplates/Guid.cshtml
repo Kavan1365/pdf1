@@ -1,0 +1,4 @@
+﻿@model Guid?
+
+@{ Guid value = Model.Value; }
+<input asp-for="@Model" class="k-textbox" value="@value" type="hidden">

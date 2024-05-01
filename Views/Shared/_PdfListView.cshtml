@@ -1,0 +1,202 @@
+﻿@{
+    string url = "https://localhost:7288/";
+    Layout = null;
+
+}
+@using KaUI.Configuration
+@using Microsoft.Extensions.Localization;
+
+
+@using System.Collections
+@using System.Linq
+@using System;
+@using System.Reflection;
+@using System.Security.Claims
+@using KaUI.Exceptions
+@using System.ComponentModel
+@using KaUI.UI.Controls.KCore.DropDownList
+@using KaUI.UI.Controls.KCore.Form
+@using KaUI.UI.Controls.KCore.TreeView
+@using System.ComponentModel.DataAnnotations
+@model List<object>
+
+@{
+    ViewDataDictionary MyProject = (ViewDataDictionary)(ViewData["MyProject"] = Html.ViewData);
+    MyProject.Remove("Title");
+    var accordionId = $"accordion{Html.ViewData.ModelMetadata?.ModelType?.Name}";
+    var formId = $"{Guid.NewGuid()}";
+    var page = Model.Count() > 0 ? (Model.ToList().Count() / 30)+1 : 0;
+    var Skip = 0;
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta https-equiv="X-UA-Compatible" content="IE=edge">
+    <title> | کنترل پنل مدیریت</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link href="@(url)/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="@(url)/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>کنترل پنل مدیریت</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="@(url)/dist/css/bootstrap-theme.css">
+    <!-- Bootstrap rtl -->
+    <link rel="stylesheet" href="@(url)/dist/css/rtl.css">
+    <!-- persian Date Picker -->
+    <!-- Font Awesome -->
+    <!-- Ionicons -->
+    <!-- Theme style -->
+    <link rel="stylesheet" href="@(url)/dist/css/AdminLTE.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="@(url)/dist/css/skins/_all-skins.min.css">
+    <!-- Morris chart -->
+    <!-- jvectormap -->
+    <!-- Daterange picker -->
+    <!-- bootstrap wysihtml5 - text editor -->
+    <!-- jQuery 3 -->
+    <script src="@(url)/jquery/dist/jquery.min.js"></script>
+
+    <link href="@(url)/pdf/style.css" rel="stylesheet" />
+</head>
+
+
+
+<body style="font-family:'IRANSans' !important;background-color:#fff !important;padding:20px">
+    <!-- title row -->
+    @for (int i = 0; i < page; i++)
+    {
+
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            @{
+
+
+
+                                var obj = Model.FirstOrDefault().GetType();
+                                foreach (var prop in obj.GetProperties())
+                                {
+
+                                    var checkhiddeninput = prop.CustomAttributes.Any(z => z.AttributeType.Name == "HiddenInputAttribute");
+                                    if (checkhiddeninput)
+                                        continue;
+
+                                    var displayName = prop.GetCustomAttribute<DisplayAttribute>()?.Name;
+
+                                    <th scope="col"> @displayName</th>
+                                }
+                            }
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Skip(Skip).Take(30).ToList())
+                        {
+                            var sss = item.ToString();
+                            <tr>
+
+
+                                @{
+
+                                    var objValue = item.GetType();
+
+                                    foreach (var prop in objValue.GetProperties())
+                                    {
+                                        var propertyInfo = item.GetType().GetProperty(prop.Name);
+                                        var checkhiddeninput = propertyInfo.CustomAttributes.Any(z => z.AttributeType.Name == "HiddenInputAttribute");
+                                        if (checkhiddeninput)
+                                            continue;
+                                        string value = "";
+                                        if (propertyInfo.GetValue(item, null) is not null)
+                                        {
+
+                                            value = propertyInfo.GetValue(item, null).ToString();
+                                        }
+
+
+                                        @if (prop.GetType() == typeof(Enum))
+                                        {
+                                            <td>value</td>
+
+
+                                        }
+                                        else
+                                   if (TypeDescriptor.GetConverter(prop.GetType()).CanConvertFrom(typeof(DateTime)))
+                                        {
+
+
+                                            @if (string.IsNullOrEmpty(value))
+                                            {
+
+                                                <td></td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>@((Convert.ToDateTime(value)).ToPersianDate())</td>
+
+                                            }
+                                        }
+                                        else
+                                        {
+
+
+                                            <td>@value</td>
+
+                                        }
+
+                                    }
+                                }
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!-- /.col -->
+        </div>
+        Skip = Skip + 30;
+    }
+    
+
+
+    <!-- jQuery UI 1.11.4 -->
+    <script src="@(url)/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="@(url)/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="@(url)/bootstrap/dist/js/bootstrap.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,5 @@
+﻿@using System.Globalization
+@model decimal?
+
+@{ string value = Model.HasValue ? Model.Value.ToString(CultureInfo.InvariantCulture) : ""; }
+<input asp-for="@Model" class="k-textbox" value="@value" type="number">

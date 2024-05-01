@@ -1,0 +1,38 @@
+﻿@model Int32
+@using BaseCore.UI.Controls.KCore.Form
+@{
+    var prop = ViewData.ModelMetadata.PropertyName;
+    var value = Model > 0 ? "true" : "false";
+    var id = Guid.NewGuid().ToString().Replace("-", "").ToString();
+}
+@*@Html.CheckBoxFor(x => x, new {data_role = "toggle", data_onstyle = "success", data_on = trueText, data_off = falseText })*@
+<input type="checkbox" value="@Model.ToString().ToLower()" data-val="@Model.ToString().ToLower()" id="@(prop)_@(id)" name="@prop" class="k-valid">
+<script>
+
+
+
+
+    $(document).ready(function ()
+    {
+           if (@(Model.ToString().ToLower())) {
+
+            $("input[name*='@prop']").val(1);
+            $("#@(prop)_@(id)").val(1);
+            $("#@(prop)_@(id)").val(1);
+            $("#@(prop)_@(id)").prop("checked", "checked");
+           
+
+        }
+
+        $("#@(prop)_@(id)").kendoSwitch({
+        messages: {
+            checked: "بله",
+            unchecked: "خیر"
+       },
+       change: function (e) {
+                $("#@(prop)_@(id)").val(e.checked ? 1 : 0)
+       }
+    });
+    })
+</script>
+

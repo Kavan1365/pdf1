@@ -1,0 +1,8 @@
+﻿
+@model long?
+@{
+    long? value = Model.HasValue ? Model.Value : null;
+}
+
+<input asp-for="@Model" class="k-textbox" value="@value" type="number">
+

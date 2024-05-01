@@ -1,0 +1,7 @@
+﻿@using System.Globalization
+@using System.Reflection
+@using BaseCore.UI.Controls.KCore.Form
+@model double?
+
+@{ string value = Model.HasValue ? Model.Value.ToString(CultureInfo.InvariantCulture) : ""; }
+<input asp-for="@Model"   class="form-control" value="@value" type="number">

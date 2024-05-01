@@ -1,0 +1,387 @@
+﻿.k-rtl .k-dropdown-wrap > .k-i-close {
+    right: calc(23 em - 8 px ) !important;
+}
+
+.k-button .k-icon {
+    margin-top: 1px;
+}
+
+[data-role=maskedDatePicker], [data-role=namerictextbox] {
+    direction: ltr;
+}
+
+.k-invalid {
+    border-color: #ff0000 !important
+}
+
+.k-widget > span.k-invalid {
+    border: 1px solid #ff0000 !important;
+}
+
+.k-multiselect-wrap {
+    padding-right: 0 !important;
+}
+
+span.k-dropdown, input.k-textbox, textarea.k-textbox, .k-combobox {
+    width: 100%;
+}
+
+span.k-validator-message {
+    display: none;
+}
+
+.k-invalid-msg {
+    float: left;
+}
+.k-tooltip, .k-tooltip.k-popup, .k-tooltip.k-widget {
+    border-radius: 4px !important;
+    border-color: #d51923 !important;
+    color: #ffffff !important;
+    background-color: #d51923 !important;
+}
+    .k-tooltip {
+    font-size: 10pt !important;
+}
+
+span.k-icon.k-warning {
+    margin: 4px 0 4px 1px;
+}
+span.k-numerictextbox {
+    width: 100% !important;
+    border: none !important;
+}
+.k-numerictextbox .k-i-arrow-60-up {
+    top: -6px !important;
+}
+
+.k-tooltip.k-invalid-msg {
+    top: -4px;
+    left: -6px;
+    margin: 0.5em;
+    display: block;
+    position: inherit;
+}
+
+.k-edit-label {
+    text-align: right !important;
+}
+
+.k-edit-buttons {
+    text-align: left;
+}
+
+.k-window-actions {
+    margin-top: -4px;
+}
+
+.form-control, /* if this class is applied to a Kendo UI widget, its layout may change */
+.container,
+.container-fluid,
+.row,
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+.col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+.col-xs-3, .col-sm-3, .col-md-3, .col-lg-3,
+.col-xs-4, .col-sm-4, .col-md-4, .col-lg-4,
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5,
+.col-xs-6, .col-sm-6, .col-md-6, .col-lg-6,
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7,
+.col-xs-8, .col-sm-8, .col-md-8, .col-lg-8,
+.col-xs-9, .col-sm-9, .col-md-9, .col-lg-9,
+.col-xs-10, .col-sm-10, .col-md-10, .col-lg-10,
+.col-xs-11, .col-sm-11, .col-md-11, .col-lg-11,
+.col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*Remove extra space in grid cell*/
+.k-grid td {
+    padding: .2em .2em !important;
+}
+
+/*Remove the Vertical Scrollbar*/
+.k-grid-header, .k-grid-footer {
+    padding: 0 !important;
+}
+
+.k-grid-content {
+    overflow-y: visible;
+}
+
+.k-grid .k-master-row, .k-treelist tr {
+    cursor: pointer;
+}
+/*remove hover background color on a grid row*/
+[data-role=grid] tr:hover:not(.k-master-row) {
+    background: transparent;
+}
+
+.k-detail-row {
+    background: transparent;
+}
+
+[data-role=grid] tr.k-alt:hover:not(.k-master-row) {
+    background: #f1f1f1;
+}
+
+#formButtons {
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/*Bootstrap form in kendo*/
+.container.frm {
+    width: 740px;
+    padding: 0;
+}
+
+    .container.frm label {
+        margin-bottom: initial;
+    }
+
+    .container.frm .form-group {
+        display: flex;
+        margin-bottom: initial;
+        padding: 5px 0;
+    }
+
+.striped .form-group {
+    border-bottom: 1px solid #ddd;
+}
+
+.form-group.alter {
+    background: #f9f9f9;
+}
+
+.k-tabstrip-right > .k-tabstrip-items .k-item:not(.k-state-active) {
+    border-width: 1px 1px 1px;
+}
+
+.k-datepicker, .k-datetimepicker, .k-timepicker {
+    width: auto;
+}
+
+/*Remove Grid Header Title Gap*/
+.k-rtl .k-grid-header .k-filterable .k-link {
+    padding: 0;
+    margin: 0 0 0 15px;
+}
+/*Remove Grid Filter Cell Gap*/
+.k-rtl .k-filtercell > .k-operator-hidden {
+    padding-left: 0;
+}
+
+/*Turn Off Number Input Spinners*/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*Turn On Scrool In Grid*/
+.k-grid > table {
+    display: block;
+    overflow-x: auto;
+}
+
+    .k-grid > table td {
+        white-space: nowrap;
+    }
+
+/*DbGeoGraphy Styles*/
+div[data-role=map] {
+    height: 250px;
+    border: 1px solid #c5c5c5;
+}
+
+
+input[readonly] {
+    background-color: #efefef !important;
+}
+
+/*TreeView Checkbox Template Style*/
+
+.k-checkbox-wrapper input[type=checkbox] {
+    margin-top: -10px !important;
+    margin-right: -4px !important;
+    position: absolute !important;
+    right: -11px !important;
+}
+
+.k-wizard-content {
+    overflow-y: unset !important;
+}
+
+.k-treeview .k-content, .k-treeview .k-item > .k-group, .k-treeview > .k-group {
+    margin: 15px !important;
+ 
+}
+/*Editor Custom Tools*/
+.k-i-insert-inline-image {
+    background-position: -288px -96px;
+}
+
+/*Editor Custom Tools*/
+.k-i-insert-inline-file {
+    background-position: -288px -216px;
+}
+
+/*Custom Kendo Upload*/
+.k-upload .k-upload-button {
+    border-width: 0 0 0 1px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.k-upload:hover .k-btn-delete {
+    display: block;
+}
+
+.k-upload .k-btn-delete {
+    float: left;
+    display: none;
+    background-color: #ffff !important;
+    border-color: #ffff !important;
+    color: #2e2e2e !important;
+    height: 27px !important;
+}
+
+    .k-upload .k-btn-delete .k-icon {
+        margin: 0;
+    }
+/*Adjust DropDownList, AutoComplete, ComboBox Width Automatically*/
+.k-list {
+    white-space: nowrap;
+}
+
+/*Intro.js Buttons*/
+.introjs-button {
+    font-family: Sahel !important;
+}
+
+
+/*Bootstap Collapse*/
+a[data-toggle=collapse].collapsed {
+    border-radius: 3px;
+    border-bottom: 1px solid #c3c3c3;
+}
+
+a[data-toggle=collapse] {
+    display: block;
+    background-color: rgb(240, 238, 238);
+    border: 1px solid #c3c3c3;
+    border-bottom: 0;
+    border-radius: 3px 3px 0 0;
+    margin: 10px 0 0 0;
+    padding: 5px 0;
+}
+
+    a[data-toggle=collapse] span {
+        margin: 15px;
+    }
+
+.panel {
+    margin-bottom: 0 !important;
+}
+
+div.collapse, div.collapsing {
+    border-top: 0;
+    border: 1px solid rgb(195, 195, 195);
+    padding: 10px 0;
+}
+
+.k-upload .k-upload-button {
+    margin-right: 0 !important;
+}
+
+@media only screen and (max-width: 750px) {
+    .container.frm {
+        width: 500px;
+        padding: 0;
+    }
+
+        .container.frm label {
+            margin-bottom: initial;
+        }
+
+        .container.frm .form-group {
+            display: flex;
+            margin-bottom: initial;
+            padding: 5px 0;
+        }
+
+    #formButtons {
+        width: 500px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+
+ 
+}
+
+@media only screen and (max-width: 520px) {
+    .container.frm {
+        width: 370px;
+        padding: 0;
+    }
+
+    #formButtons {
+        width: 330px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    
+
+}
+@media (max-width: 1000px) {
+    .k-pager-sizes {
+        display: none !important;
+    }
+
+    .k-pager-info {
+        display: none !important;
+    }
+}
+
+.k-pager-numbers .k-state-selected {
+    cursor: inherit;
+    z-index: 2;
+    border-radius: 10em;
+    height: 26px;
+    margin: 3px;
+    order-radius: 10em;
+    padding: 4px 4px;
+    min-width: 2.14em;
+    height: 2.14em;
+    border-width: 1px;
+    border-style: solid;
+    outline: 0;
+    box-sizing: border-box;
+    color: inherit;
+    text-align: center;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: relative;
+}
+
+
+.k-rtl .k-dropdown-wrap, .k-rtl .k-dropdowntree-clearable .k-dropdown-wrap .k-input, .k-rtl .k-dropdowntree-clearable .k-multiselect-wrap, .k-rtl .k-multiselect-clearable .k-multiselect-wrap, .k-rtl .k-numeric-wrap, .k-rtl .k-picker-wrap {
+    padding-right: 37px !important;
+}
+
+.k-combobox-clearable, .k-dropdown-wrap, .k-dropdowntree-clearable .k-dropdown-wrap, .k-dropdowntree-clearable .k-multiselect-wrap, .k-multiselect-clearable .k-multiselect-wrap {
+    padding-right: 0px !important;
+    padding-left: 0em !important;
+}
+    .k-dropdown-wrap > .k-i-close {
+        right: calc(16em - 8px)!important;
+    }

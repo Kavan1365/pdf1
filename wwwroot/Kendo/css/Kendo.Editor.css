@@ -1,0 +1,35 @@
+﻿body {
+    font-family: Sahel,open sans,Tahoma,"DejaVu Sans",helvetica,arial,freesans,sans-serif;
+    font-size: 11pt;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: Sahel,open sans,Tahoma,"DejaVu Sans",helvetica,arial,freesans,sans-serif;
+    font-weight: bold;
+}
+
+select, input {
+    font-family: Sahel !important;
+    font-size: inherit !important;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url('/fonts/Sahel-FD.eot');
+    src: url('/fonts/Sahel-FD.eot?#iefix') format('embedded-opentype'), url('/fonts/Sahel-FD.woff') format('woff'), url('/fonts/Sahel-FD.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url('/fonts/Sahel-Bold-FD.eot');
+    src: url('/fonts/Sahel-Bold-FD.eot?#iefix') format('embedded-opentype'), url('/fonts/Sahel-Bold-FD.woff') format('woff'), url('/fonts/Sahel-Bold-FD.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: Sahel;
+    src: url('/fonts/Sahel-Black-FD.eot');
+    src: url('/fonts/Sahel-Black-FD.eot?#iefix') format('embedded-opentype'), url('/fonts/Sahel-Black-FD.woff') format('woff'), url('/fonts/Sahel-Black-FD.ttf') format('truetype');
+    font-weight: 900;
+}

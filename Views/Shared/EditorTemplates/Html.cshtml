@@ -1,0 +1,20 @@
+﻿@model string
+
+
+    @Html.Mvc().HtmlEditorFor(m => m)
+<script>
+    $(document).ready(function () {
+        ////add span editor////
+        setTimeout(function () {
+            $(".k-i-insert-inline-image").addClass("k-i-image")
+            $(".k-i-insert-inline-file").addClass("k-i-file");
+        }, 1000)
+
+    });
+        $(document).ready(function () {
+            $("#@Html.IdFor(x=>x)").parents(".col-md-9").removeClass("col-md-9").addClass("col-md-12");
+        $("#@Html.IdFor(x=>x)").parents(".col-xs-9").removeClass("col-xs-9").addClass("col-xs-12");
+    });
+
+
+</script>

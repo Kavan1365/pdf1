@@ -1,0 +1,12 @@
+﻿@model string
+<TextArea asp-for="@Model" class="k-textbox" rows="6"></TextArea>
+
+
+<script>
+    $(document).ready(function () {
+        $("#@Html.IdFor(x=>x)").parents(".col-md-9").removeClass("col-md-9").addClass("col-md-12");
+        $("#@Html.IdFor(x=>x)").parents(".col-xs-9").removeClass("col-xs-9").addClass("col-xs-12");
+    });
+
+
+</script>

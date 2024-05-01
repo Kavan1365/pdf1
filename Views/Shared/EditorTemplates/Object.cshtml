@@ -1,0 +1,194 @@
+﻿@*@using System.Collections
+@using System.Linq
+@using System;
+@using System.Reflection;
+@using System.Security.Claims
+@using ViewModels
+@using BaseCore.UI.Controls.KCore.DropDownList
+@using BaseCore.UI.Controls.KCore.Form
+@using BaseCore.UI.Controls.KCore.TreeView
+@model Object
+@inject UrlHelper _UrlHelper
+
+@{
+    ViewDataDictionary MyProject = (ViewDataDictionary)(ViewData["MyProject"] = Html.ViewData);
+    MyProject.Remove("Title");
+    var accordionId = $"accordion{ Html.ViewData.ModelMetadata?.ModelType?.Name }";
+
+}
+
+<div id="@accordionId" class="container frm k-rtl">
+    @foreach (var prop in MyProject.ModelMetadata.Properties.Where(pm => pm.ShowForEdit && pm.ModelType != typeof(IEnumerable) && pm.ModelType != typeof(IEnumerable<SelectItem>) && pm.ModelType != typeof(List<TreeNode>)))
+    {
+        var value = Html.Value(prop.Name);
+        if (prop.HideSurroundingHtml || prop.PropertyName == "Id" || prop.TemplateHint == "HiddenInput")
+        {
+            if (prop.PropertyName != "Guid")
+            {
+                @Html.Hidden(prop.PropertyName)
+                continue;
+            }
+
+        }
+
+        var nameevent = ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName)?.GetCustomAttribute<BaseCore.Helper.ExtensionMethods.ModelShowAttribute>();
+        var dropdown = ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName).GetCustomAttribute<DropDownListAttribute>();
+        var tree = ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName).GetCustomAttribute<TreeViewAttribute>();
+
+
+        if (ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName).IsDefined(typeof(CollapsAttribute), true))
+        {
+            var collapse = ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName).GetCustomAttribute<CollapsAttribute>();
+            @Html.Raw($"<div class='panel'><a href='#{accordionId}_{collapse.Id}' class='{(collapse.Open ? "" : "collapsed")}' data-parent='#{accordionId}' data-toggle='collapse'>" +
+                    $"<span>{collapse.Title}</span><i class='fa fa-angle-double-left'></i></a><div id='{accordionId}_{collapse.Id}' class='collapse {(collapse.Open ? "in" : "")}'>")
+        }
+
+        var editorCol = "col-sm-9";
+
+        if (nameevent != null && nameevent.IsLast)
+        {
+            editorCol = "col-sm-8";
+
+        }
+        else
+        {
+            editorCol = "col-sm-9";
+
+        }
+        var renderFormGroup = true;
+        var renderEndFormGroup = true;
+        if (ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName).IsDefined(typeof(ColMd6Attribute), true))
+        {
+
+            if (nameevent != null && nameevent.IsLast)
+            {
+                editorCol = "col-sm-2";
+
+            }
+            else
+            {
+                editorCol = "col-sm-3";
+
+            }
+
+            if (ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName).GetCustomAttribute<ColMd6Attribute>().IsLast)
+            {
+                renderFormGroup = false;
+            }
+            else
+            {
+                renderEndFormGroup = false;
+            }
+        }
+
+        if (renderFormGroup)
+        {
+            @Html.Raw("<div class='form-group'>")
+        }
+        @if (prop.PropertyName != "Guid")
+        {
+            <label class="col-md-3">
+                @Html.DisplayName(prop.PropertyName)
+            </label>
+        }
+
+
+        <div class="@editorCol">
+            @if (dropdown != null)
+            {
+                @if (dropdown.LocalSourceFieldName != null)
+                {
+
+                    if (dropdown.Multiple)
+                    {
+                        ModelExpressionProvider modelExpressionProvider = (ModelExpressionProvider)ViewContext.HttpContext.RequestServices.GetService(typeof(IModelExpressionProvider));
+                        var source = modelExpressionProvider.CreateModelExpression(ViewData, dropdown.LocalSourceFieldName)?.Model as IEnumerable<SelectItem>;
+                        var data = source != null ? string.Join(',', source.ToList().Select(x => "{" + $"'Title':'{x.Title}','Id':{x.Id}" + "}")) : "";
+
+                        ModelExpressionProvider modelExpressionProvider1 = (ModelExpressionProvider)ViewContext.HttpContext.RequestServices.GetService(typeof(IModelExpressionProvider));
+                        var modelExplorer = modelExpressionProvider1.CreateModelExpression(ViewData, prop.Name)?.Model as IEnumerable;
+                        if (modelExplorer is Array)
+                        {
+                            value = $"[{string.Join(",", ((Array)modelExplorer).OfType<int>().Select(x => $"'{x.ToString()}'"))},]";
+                        }
+
+                        <select id="@prop.PropertyName"
+                                name="@prop.PropertyName"
+                                data-role="multiselect"
+                                data-value="@value"
+                                data-text-field="Title"
+                                multiple="multiple"
+                                data-value-field="Id" data-min-length="1"
+                                data-enforce-min-length="false"
+                                data-auto-bind="true"
+                                data-source="{'data':[@data]}">
+                        </select>
+                    }
+                    else
+                    {
+                        ModelExpressionProvider modelExpressionProvider = (ModelExpressionProvider)ViewContext.HttpContext.RequestServices.GetService(typeof(IModelExpressionProvider));
+                        var source = modelExpressionProvider.CreateModelExpression(ViewData, dropdown.LocalSourceFieldName)?.Model as IEnumerable;
+
+                        @Html.Mvc().DropDownList(prop.PropertyName, dropdown).SetLocalDataSource(source).SetValue(value).Config(cfg =>
+                        {
+                            cfg.UrlApi = _UrlHelper.UrlBase;
+                        })
+                    }
+                }
+                else
+                {
+                    if (dropdown.Multiple)
+                    {
+                        @Html.Mvc().DropDownList(prop.PropertyName, dropdown).SetValue(value).Config(cfg =>
+                        {
+                            cfg.UrlApi = _UrlHelper.UrlBase;
+                            cfg.Jwt = _UrlHelper.Jwt;
+                        })
+
+                    }
+                    else
+                    {
+                        @Html.Mvc().DropDownList(prop.PropertyName, dropdown).SetValue(value).Config(cfg =>
+                        {
+                        cfg.UrlApi = _UrlHelper.UrlBase;
+                        })
+                    }
+                }
+
+
+            }
+            else if (tree != null)
+            {
+                ModelExpressionProvider modelExpressionProvider = (ModelExpressionProvider)ViewContext.HttpContext.RequestServices.GetService(typeof(IModelExpressionProvider));
+                var source = modelExpressionProvider.CreateModelExpression(ViewData, tree.LocalSourceFieldName)?.Model as List<TreeNode>;
+                @Html.Mvc().TreeView(prop.PropertyName, tree).SetLocalDataSource(source).Config(cfg => { cfg.Jwt = _UrlHelper.Jwt; })
+
+            }
+            else
+            {
+                @Html.Editor(prop.PropertyName, prop.PropertyName)
+            }
+        </div>
+        if (nameevent != null && nameevent.IsLast)
+        {
+            <div class="col-md-1">
+                <button id="nameevent@(prop.PropertyName)" type="button" onclick="@nameevent.EventName" class="btn btn-sm btn-blockCustome btn-success">+</button>
+            </div>
+        }
+
+        if (renderEndFormGroup)
+        {
+            @Html.Raw("</div>")
+        }
+
+
+        if (ViewData.ModelMetadata.ModelType.GetProperty(prop.PropertyName).IsDefined(typeof(EndCollapsAttribute), true))
+        {
+            @Html.Raw("</div></div>")
+        }
+    }
+</div>
+<script>
+    objuploadlist = {  };
+
+</script>*@

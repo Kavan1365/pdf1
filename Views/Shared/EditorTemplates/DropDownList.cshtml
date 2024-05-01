@@ -1,0 +1,10 @@
+﻿@model int[]
+@{
+    Layout = null;
+    var prop = ViewData.ModelMetadata;
+    //var dropdown = ViewData.ModelMetadata.ModelType.GetProperty(Model).GetCustomAttribute<DropDownListAttribute>();
+
+}
+
+<select id="@prop.Name" data-option-label="sdfsdfs" data-role='multiselect' data-value="@string.Join(',', Model.ToList())" data-source="null"></select>
+

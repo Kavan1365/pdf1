@@ -1,0 +1,95 @@
+﻿@using pdf.Controllers
+@model DataTypeViewModelPdf
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    string id = Guid.NewGuid().ToString();
+}
+<h4 class="py-3 breadcrumb-wrapper mb-4">
+    لیست تستی
+</h4>
+<div class="card" style="padding:5px">
+    <div class="container frm k-rtl">
+        @using (Html.BeginForm())
+        {
+            <div id="form1">
+
+            @(await Component.InvokeAsync("CustomeForm", Model))
+            </div>
+        }
+        <div id="1" name="formButtons">
+        <hr>
+        <div style="text-align:left">
+            <a href="/home/pdf" class="k-button k-button-icontext k-primary k-grid-update">
+                <span class="k-icon k-i-check"></span>دانلود همه
+            </a>
+
+            <button id="sreach" class="k-button k-button-icontext k-primary k-grid-update" type="button">
+                <span class="k-icon k-i-check"></span>جستجو دانلود
+            </button>
+        </div>
+    </div>
+    </div>
+
+</div>
+
+<div class="card" style="padding:5px">
+    @(Html.Mvc().Grid<DataTypeViewModel>("grid1")
+        .Config(cfg =>
+        {
+            cfg.FitColumns = true;
+
+        }))
+</div>
+<script>
+    $("#sreach").on("click", function (evt) {
+        (window.event || evt).preventDefault();
+        var frm = $("#form1").closest("form");
+
+        kendo.ui.progress(frm, true);
+        var callback = $(this).data('callback') || $(this).parents('[data-submit=ajax]').data('callback');
+
+
+        var data = '';
+        var list = frm.serialize().split('&')
+        for (let i = 0; i < list.length; i++) {
+            const last = list[i].charAt(list[i].length - 1);
+            if (last != "=") {
+                data = data + list[i] + "&"
+            }
+        }
+
+        var elements = "#form1"
+
+        $(elements + " input ," + elements + " select ," + elements + " textarea").map(function (index, elm) {
+            var checknameelm = elm.name.split('.');
+            if (elm.name != "" && checknameelm.length == 1) {
+                var datakendoMultiSelect = $("[name =" + elm.name + "]").data('role');
+                if (datakendoMultiSelect != "undefined" && datakendoMultiSelect == "multiselect") {
+
+                    data = data.replace("&" + elm.name + "=", "");
+                    var values = $("[name =" + elm.name + "]").data("kendoMultiSelect").value();
+                    for (var i = 0; i < values.length; i++) {
+                        data = data + "&" + elm.name + "=" + values[i]
+                    }
+                }
+
+
+            }
+
+
+
+        });
+        debugger;
+        var grid1 = $("#grid1").data("kendoGrid");
+        grid1.dataSource.transport.options.read.url = "/home/list?" + data;
+        grid1.dataSource.read();
+        grid1.refresh();
+        kendo.ui.progress(frm, false);
+
+        window.location.href = "/home/PdfFilter?" + data;
+    });
+</script>
+

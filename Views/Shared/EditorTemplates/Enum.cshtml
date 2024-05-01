@@ -1,0 +1,29 @@
+﻿@using System
+@using System.Collections.Generic
+@using System.Linq
+@using KaUI.Exceptions
+@using KaUI.Exceptions
+@using KaUI.UI.Controls
+
+@model Enum
+@{
+
+    Type t = ViewData.ModelMetadata.ModelType;
+    if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>))
+    {
+        t = t.GetGenericArguments().First();
+    }
+    var source = Enum.GetValues(t).Cast<Enum>().Where(e => !e.IgnoredInEditor()).ToList().Select(m => new { Id = m.GetHashCode(), Title = m.GetDisplay() });
+
+    var isFlag = ViewData.ModelMetadata.ModelType.GetCustomAttributes(typeof(FlagsAttribute), true).FirstOrDefault() != null;
+    object value = Model.GetHashCode();
+    if (isFlag)
+    {
+        value = source.Where(r => ((int)value & r.Id) == r.Id).Select(x => x.Id).ToArray();
+    }
+
+    @(Html.Mvc().DropDownList(ViewData.ModelMetadata.PropertyName).SetLocalDataSource(source).SetValue(value).Config(cfg =>
+    {
+        cfg.Multiple = isFlag;
+    }))
+}
