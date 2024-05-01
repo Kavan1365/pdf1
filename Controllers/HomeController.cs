@@ -191,21 +191,34 @@ namespace pdf.Controllers
                 list.Add(item);
 
             }
+           
             var headerHtml = "https://localhost:7288" + Url.Action("HeaderPdf", "home");
             var footerHtml = "https://localhost:7288" + Url.Action("FooterPdf", "home");
-
-
-            return new ViewAsPdf("_PdfListView", list)
+            if (model.Orientation==Orientation.Portrait)
             {
-                FileName = "file.pdf",
-                CustomSwitches = $"--header-html \"{headerHtml}\" --footer-html \"{footerHtml}\" --header-spacing 5 --footer-spacing 5",
-                PageSize = model.Size,
-                PageMargins = new Rotativa.AspNetCore.Options.Margins { Left = 5, Right = 5, Top = 20, Bottom = 20 },
-                PageOrientation = model.Orientation,
-            };
+                return new ViewAsPdf("_PdfListView", list)
+                {
+                    FileName = "file.pdf",
+                    CustomSwitches = $"--header-html \"{headerHtml}\" --footer-html \"{footerHtml}\" --header-spacing 5 --footer-spacing 5",
+                    PageSize = model.Size,
+                    PageMargins = new Rotativa.AspNetCore.Options.Margins { Left = 5, Right = 5, Top = 20, Bottom = 20 },
+                    PageOrientation = model.Orientation,
+                };
+            }
+            else
+            {
+                return new ViewAsPdf("_PdfListOrientationView", list)
+                {
+                    FileName = "file.pdf",
+                    CustomSwitches = $"--header-html \"{headerHtml}\" --footer-html \"{footerHtml}\" --header-spacing 5 --footer-spacing 5",
+                    PageSize = model.Size,
+                    PageMargins = new Rotativa.AspNetCore.Options.Margins { Left = 5, Right = 5, Top = 20, Bottom = 20 },
+                    PageOrientation = model.Orientation,
+                };
+            }
+            
 
-
-
+          
 
         }
 
@@ -219,14 +232,7 @@ namespace pdf.Controllers
             var list = new List<object>();
 
             var obj = await _baseContext.DataType.AsNoTracking().ProjectTo<DataTypeViewModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
-            for (int i = 0; i < 500; i++)
-            {
-                foreach (var item in obj)
-                {
-                    list.Add(item);
-
-                }
-            }
+           
             foreach (var item in obj)
             {
                 list.Add(item);
@@ -235,6 +241,7 @@ namespace pdf.Controllers
             var headerHtml = "https://localhost:7288" + Url.Action("HeaderPdf", "home");
             var footerHtml = "https://localhost:7288" + Url.Action("FooterPdf", "home");
 
+            ViewBag.Orientation = Orientation.Portrait;
 
             return new ViewAsPdf("_PdfListView", list)
             {
