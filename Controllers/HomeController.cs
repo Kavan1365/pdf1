@@ -189,7 +189,14 @@ namespace pdf.Controllers
             var list = new List<object>();
 
             var obj = await _baseContext.DataType.AsNoTracking().ProjectTo<DataTypeViewModel>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+            for (int i = 0; i < 500; i++)
+            {
+                foreach (var item in obj)
+                {
+                    list.Add(item);
 
+                }
+            }
             foreach (var item in obj)
             {
                 list.Add(item);
